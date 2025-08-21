@@ -10,12 +10,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/Girija-U/Ansible_Jenkins_Sonar.git', branch: 'main', credentialsId: 'github-pat'
-            }
-        }
-
         stage('Build WAR with Maven') {
             steps {
 sh 'mvn clean package'
