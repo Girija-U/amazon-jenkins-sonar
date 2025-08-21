@@ -6,26 +6,22 @@ pipeline {
     }
 
     environment {
-        SONAR_TOKEN = credentials('sonarqube') // Jenkins secret text credentials
+        SONAR_TOKEN = credentials('sonar-token') // Jenkins secret text credentials
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/Girija-U/Ansible_Jenkins_Sonar.git', branch: 'main'
-            }
-        }
-
         stage('Build WAR with Maven') {
             steps {
+                dir('Amazon-Web') {
 sh 'mvn clean package'
             }
-        }
+       }
+ }
 
         stage('SonarQube Analysis') {
             steps {
 withSonarQubeEnv('sonarqube') {
-sh 'mvnsonar:sonar -Dsonar.projectKey=devops_git'
+sh 'mvn sonar:sonar -Dsonar.projectKey=devops_git'
                 }
             }
         }
