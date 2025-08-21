@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build WAR with Maven') {
             steps {
-                dir('Amazon') {
+                dir('Amazon-Web') {
 sh 'mvn clean package'
             }
        }
