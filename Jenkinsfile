@@ -17,7 +17,7 @@ sh 'mvn clean package'
  }
         stage('SonarQube Analysis') {
             steps {
-withSonarQubeEnv('sonarqube') {
+withSonarQubeEnv('sonar-qube') {
 sh 'mvn sonar:sonar -Dsonar.projectKey=devops_git'
                 }
             }
