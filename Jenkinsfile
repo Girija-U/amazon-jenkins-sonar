@@ -12,9 +12,11 @@ pipeline {
     stages {
         stage('Build WAR with Maven') {
             steps {
+                dir('Amazon') {
 sh 'mvn clean package'
             }
-        }
+       }
+ }
 
         stage('SonarQube Analysis') {
             steps {
