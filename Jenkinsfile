@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Girija-U/Ansible_Jenkins_Sonar.git', branch: 'main'
+                git url: 'https://github.com/Girija-U/Ansible_Jenkins_Sonar.git', branch: 'main', credentialsId: 'github-pat'
             }
         }
 
